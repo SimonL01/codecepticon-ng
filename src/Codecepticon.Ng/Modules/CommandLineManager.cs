@@ -223,17 +223,39 @@ namespace Codecepticon.CommandLine
             return documentData;
         }
 
+        /// <summary>
+        /// Turns a SPEC table (flag name -> "switch" or "") into a VALUE table
+        /// (flag name -> what the user typed), dropping flags that were absent.
+        ///
+        /// It builds a new dictionary rather than writing back into the one it
+        /// was handed, and that is load-bearing. Writing back overwrote the very
+        /// "switch" markers it reads to decide whether a flag takes a value, so
+        /// the call was destructive and not repeatable: a second call saw
+        /// GlobalArguments["version"] == "true" instead of "switch", concluded
+        /// --version takes a value, and read past the end of Args. IsHelp() and
+        /// IsVersion() both run against GlobalArguments, so that second call is
+        /// the normal path, not an edge case.
+        ///
+        /// MergeArguments() also assumes GlobalArguments is still a spec table
+        /// when a module's parser concatenates its own flags onto it.
+        /// </summary>
         protected Dictionary<string, string> LoadCommandLine(Dictionary<string, string> arguments)
         {
-            foreach (string parameter in arguments.Keys.ToList())
+            Dictionary<string, string> values = new Dictionary<string, string>();
+
+            foreach (KeyValuePair<string, string> parameter in arguments)
             {
-                arguments[parameter] = GetArgument($"--{parameter}", arguments[parameter] == "switch");
+                string value = GetArgument($"--{parameter.Key}", parameter.Value == "switch");
+
+                // Absent flags are dropped, not stored as null: callers test
+                // membership (ContainsKey) rather than nullness.
+                if (value != null)
+                {
+                    values[parameter.Key] = value;
+                }
             }
 
-            // Remove null values.
-            return arguments
-                .Where(v => (v.Value != null))
-                .ToDictionary(v => v.Key, v => v.Value);
+            return values;
         }
 
         protected virtual void Init()
