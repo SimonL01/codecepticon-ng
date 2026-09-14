@@ -1,0 +1,52 @@
+﻿%%_HEADER_%%
+
+Usage: Codecepticon.exe --module [csharp|cs] [OPTIONS]...
+
+--action [obfuscate|unmap]      Specify the action to be executed, whether to obfuscate a solution or unmap output
+                                files back to readable data.
+--path [input]                  What to obfuscate. Any of:
+                                    a *.slnx or *.sln solution
+                                    a bare *.csproj
+                                    a directory (searched: .slnx, then .sln, then a lone .csproj)
+--build                         Build the obfuscated solution when finished. Before doing so, the build
+                                tool and the targeting packs the project needs are checked, and the run
+                                aborts BEFORE any source is rewritten if they are missing.
+--build-path [path]             Path to a directory where the solution will be compiled to. Only works with --build.
+--precompile                    Build the ORIGINAL project first and abort if it does not compile. Catches
+                                "this was already broken" before anything is rewritten. Recommended.
+--verify                        Build the OBFUSCATED result and fail if it does not compile. Implies --build.
+                                Exits 3 on failure, distinct from every other error, because the source on
+                                disk has been rewritten and is broken - it has to be restored.
+--allow-multi-project           Permit a solution containing more than one project. Refused by default:
+                                cross-project renaming is not verified.
+--backup                        Copy the source aside before the first rewrite. Obfuscation is IN PLACE;
+                                without this your only undo is source control.
+--backup-path [dir]             Where to put the backup. Implies --backup. Default is a timestamped
+                                directory next to the solution. Refuses a non-empty directory.
+--no-reflection-scan            Suppress the reflection warning. By default, string literals passed to
+                                GetType/GetMethod/CreateInstance and friends are checked against the names
+                                being renamed - those break at RUN time, not compile time, so nothing else
+                                catches them.
+--profile [name]                Name of an application-specific profile to use. Supported profiles are:
+                                - certify
+                                - rubeus
+                                - seatbelt
+                                - sharpchrome
+                                - sharpdpapi
+                                - sharphound
+                                - sharpview
+
+--rename [all|..custom..]       Specify what requires obfuscation, from below:
+                                - all   Will obfuscate everything.
+                                - n     Namespaces
+                                - c     Classes
+                                - e     Enums
+                                - f     Functions
+                                - p     Properties
+                                - a     Parameters
+                                - v     Variables
+                                - s     Structs
+                                - o     Command Line
+%%_SHARED_%%
+
+Good luck.

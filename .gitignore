@@ -1,0 +1,24 @@
+# .NET build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+*.suo
+.vs/
+
+# Local tool output
+*.map.json
+
+# Logger.WriteToLogFile writes codecepticon.log next to the executable. That
+# already sits under bin/, but the rule is here explicitly: a run's log records
+# target paths and obfuscated identifiers, which is engagement data, not source.
+*.log
+
+# VS Code: settings.json and extensions.json are PROJECT settings and belong in
+# the repo - they encode the same line-ending policy as .gitattributes, so an
+# editor does not quietly undo it. Everything else under .vscode/ is per-user
+# (launch.json carries local paths) and does not.
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

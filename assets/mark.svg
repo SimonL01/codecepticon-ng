@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="codecepticon-ng">
+  <title>codecepticon-ng</title>
+  <!-- Source lines resolving into a C; trailing tokens fragment as they are renamed. -->
+  <g fill="#7D8C99">
+    <rect x="1.5" y="1.5" width="45" height="45" rx="11.5" fill="none" stroke="#7D8C99" stroke-width="1.25" opacity=".2"/>
+    <rect x="10"   y="7.1"  width="15"  height="3.4" rx="1.7"/>
+    <rect x="27.5" y="7.1"  width="5"   height="3.4" rx="1.7" opacity=".5"/>
+    <rect x="34.5" y="7.1"  width="3.5" height="3.4" rx="1.7" opacity=".28"/>
+    <rect x="10"   y="14.8" width="6.5" height="3.4" rx="1.7"/>
+    <rect x="19"   y="14.8" width="4"   height="3.4" rx="1.7" opacity=".16"/>
+    <rect x="10"   y="22.5" width="6.5" height="3.4" rx="1.7"/>
+    <rect x="10"   y="30.2" width="6.5" height="3.4" rx="1.7"/>
+    <rect x="19"   y="30.2" width="3"   height="3.4" rx="1.7" opacity=".16"/>
+    <rect x="10"   y="37.9" width="13"  height="3.4" rx="1.7"/>
+    <rect x="25.5" y="37.9" width="5"   height="3.4" rx="1.7" opacity=".5"/>
+    <rect x="33"   y="37.9" width="5"   height="3.4" rx="1.7" opacity=".28"/>
+  </g>
+</svg>

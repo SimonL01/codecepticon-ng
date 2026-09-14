@@ -1,0 +1,67 @@
+{
+  // ==========================================================================
+  // PROJECT settings, committed deliberately. These mirror .gitattributes so
+  // the editor cannot quietly undo the line-ending policy it encodes. Personal
+  // preferences do not belong here - .gitignore keeps the rest of .vscode/ out.
+  // ==========================================================================
+
+  // --- Line endings -------------------------------------------------------
+  // The repo stores LF. These settings apply to NEW files; existing files keep
+  // whatever they already have, which is what you want for 10,850 lines of
+  // ported upstream code.
+  "files.eol": "\n",
+
+  // MSBuild and PowerShell rewrite these with CRLF regardless, so
+  // .gitattributes declares them eol=crlf rather than fighting it. New files
+  // should match, or the first save produces a whole-file diff.
+  "[powershell]": { "files.eol": "\r\n" },
+  "[bat]": { "files.eol": "\r\n" },
+  "[xml]": { "files.eol": "\r\n" },
+
+  // .csproj/.props/.targets/.slnx are XML but VS Code does not know it.
+  // Without this they open as plain text: no syntax highlighting, and the
+  // [xml] rule above never applies.
+  "files.associations": {
+    "*.csproj": "xml",
+    "*.props": "xml",
+    "*.targets": "xml",
+    "*.slnx": "xml"
+  },
+
+  // --- Do not create churn ------------------------------------------------
+  // Trailing-whitespace and final-newline fixups look harmless until you open
+  // one ported file, save it, and add 200 unrelated lines to a review. Left off
+  // on purpose; revisit once parity holds.
+  "files.trimTrailingWhitespace": false,
+  "files.insertFinalNewline": false,
+
+  // --- Keep the workspace navigable ---------------------------------------
+  // bin/obj are build output.
+  // Searching for a symbol while editing docs should not return three
+  // copies of it. They stay visible in the explorer - this only affects search
+  // and the file watcher.
+  "search.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "upstream": true
+  },
+  "files.watcherExclude": {
+    "**/bin/**": true,
+    "**/obj/**": true,
+    "upstream/**": true
+  },
+
+  // --- Docs ---------------------------------------------------------------
+  // The docs are hand-wrapped at 80 characters. The ruler makes that visible; word wrap
+  // keeps long lines readable while editing without reflowing the file.
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.rulers": [80],
+    "files.trimTrailingWhitespace": false
+  },
+
+  // --- C# Dev Kit ---------------------------------------------------------
+  // There is no .sln in this repo, only Codecepticon.Ng.csproj. Without this
+  // the extension prompts for a solution on every window.
+  "dotnet.defaultSolution": "disable"
+}

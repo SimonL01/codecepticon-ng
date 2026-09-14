@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 140" width="496" height="140" role="img" aria-label="codecepticon-ng - source-level obfuscation">
+  <title>codecepticon-ng</title>
+  <!-- Source lines resolving into a C; trailing tokens fragment as they are renamed. -->
+  <g transform="translate(24 34) scale(1.5)" fill="#11181C">
+    <rect x="1.5" y="1.5" width="45" height="45" rx="11.5" fill="none" stroke="#11181C" stroke-width="1.25" opacity=".2"/>
+    <rect x="10"   y="7.1"  width="15"  height="3.4" rx="1.7"/>
+    <rect x="27.5" y="7.1"  width="5"   height="3.4" rx="1.7" opacity=".5"/>
+    <rect x="34.5" y="7.1"  width="3.5" height="3.4" rx="1.7" opacity=".28"/>
+    <rect x="10"   y="14.8" width="6.5" height="3.4" rx="1.7"/>
+    <rect x="19"   y="14.8" width="4"   height="3.4" rx="1.7" opacity=".16"/>
+    <rect x="10"   y="22.5" width="6.5" height="3.4" rx="1.7"/>
+    <rect x="10"   y="30.2" width="6.5" height="3.4" rx="1.7"/>
+    <rect x="19"   y="30.2" width="3"   height="3.4" rx="1.7" opacity=".16"/>
+    <rect x="10"   y="37.9" width="13"  height="3.4" rx="1.7"/>
+    <rect x="25.5" y="37.9" width="5"   height="3.4" rx="1.7" opacity=".5"/>
+    <rect x="33"   y="37.9" width="5"   height="3.4" rx="1.7" opacity=".28"/>
+  </g>
+
+  <line x1="116" y1="44" x2="116" y2="96" stroke="#11181C" stroke-width="1" opacity=".18"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace">
+    <text x="140" y="68" font-size="32" font-weight="600" letter-spacing="2"
+          textLength="254" lengthAdjust="spacing" fill="#11181C">CODECEPTICON</text>
+    <text x="396" y="68" font-size="32" font-weight="400" letter-spacing="2"
+          textLength="62" lengthAdjust="spacing" fill="#6B7A85">-ng</text>
+    <text x="141" y="92" font-size="9.5" font-weight="400" letter-spacing="1.4"
+          textLength="334" lengthAdjust="spacing" fill="#6B7A85">SOURCE-LEVEL OBFUSCATION &#183; C# &#183; POWERSHELL &#183; VBA</text>
+  </g>
+</svg>

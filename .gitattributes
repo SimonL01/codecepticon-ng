@@ -1,0 +1,42 @@
+# Repo stores LF; the working tree gets whatever the file type needs. Without
+# this, a Linux host and a Windows VM editing the same repo churn every line of
+# every file on each commit.
+* text=auto
+
+# VS / MSBuild / PowerShell rewrite these with CRLF regardless — declare it
+# rather than fight it.
+*.sln     text eol=crlf
+*.slnx    text eol=crlf
+*.csproj  text eol=crlf
+*.props   text eol=crlf
+*.targets text eol=crlf
+*.ps1     text eol=crlf
+*.psm1    text eol=crlf
+*.cmd     text eol=crlf
+*.bat     text eol=crlf
+
+*.sh      text eol=lf
+
+*.md   text eol=lf
+*.json text eol=lf
+
+*.dll binary
+*.exe binary
+*.pdb binary
+*.snk binary
+
+# ---------------------------------------------------------------------------
+# How GitHub presents this repo.
+#
+# 32,150 of the ~45,000 tracked lines are ANTLR output, and CommandLineGenerator
+# .html is a vendored third-party tool carrying minified JS. Left undeclared,
+# the language breakdown says "C# is a minority language here" and every diff
+# that touches the VB6 module is buried in generated parser tables.
+#
+# linguist-generated also collapses these by default in pull-request diffs,
+# which is the behaviour you want: regenerating the parser should not read as
+# 32k lines of review.
+# ---------------------------------------------------------------------------
+CommandLineGenerator.html                               linguist-vendored
+src/Codecepticon.Ng/Modules/VB6/ANTLR/VisualBasic6.g4   linguist-vendored
+src/Codecepticon.Ng/Modules/VB6/ANTLR/VisualBasic6*.cs  linguist-generated

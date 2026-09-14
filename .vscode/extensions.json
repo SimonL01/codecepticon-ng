@@ -1,0 +1,12 @@
+{
+  // Suggested when the folder is opened. Nothing here is required to build -
+  // `dotnet build` is the only dependency.
+  "recommendations": [
+    // C# language support. Dev Kit is the fuller experience but is licensed;
+    // ms-dotnettools.csharp alone is enough to read and edit this codebase.
+    "ms-dotnettools.csharp",
+
+    // The PowerShell module's own templates and any .ps1 you obfuscate.
+    "ms-vscode.powershell"
+  ]
+}
