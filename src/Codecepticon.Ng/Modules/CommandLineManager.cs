@@ -22,6 +22,7 @@ namespace Codecepticon.CommandLine
         {
             { "module", "" },
             { "help", "switch" },
+            { "version", "switch" },
             { "config", "" },
             { "action", "" },
             { "verbose", "switch" },
@@ -112,6 +113,18 @@ namespace Codecepticon.CommandLine
         {
             Arguments = LoadCommandLine(GlobalArguments);
             return (Arguments.Count == 1 && Arguments.ContainsKey("help"));
+        }
+
+        /// <summary>
+        /// --version, and nothing else. Deliberately mirrors IsHelp(): both are
+        /// questions about the binary rather than instructions to it, so both
+        /// answer before --module is required and neither is combinable with a
+        /// real run.
+        /// </summary>
+        public bool IsVersion()
+        {
+            Arguments = LoadCommandLine(GlobalArguments);
+            return (Arguments.Count == 1 && Arguments.ContainsKey("version"));
         }
 
         public string LoadHelp(CodecepticonModules module)

@@ -3,5 +3,6 @@
 Usage:
     Codecepticon.exe --module [csharp|powershell|vba|sign] --help [OPTIONS]...
     Codecepticon.exe --config [XML Config File]
+    Codecepticon.exe --version
     
 Tip: Use the command line generator HTML file to make your life easier.

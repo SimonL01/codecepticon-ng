@@ -66,6 +66,16 @@ namespace Codecepticon
                 return ExitSuccess;
             }
 
+            // Before GetModule(), because --version is a question about this
+            // binary and has no module to speak of. Answering it after the check
+            // below would reject it as "no module is defined" - which is the one
+            // failure you most want a version number in order to diagnose.
+            if (cmdManager.IsVersion())
+            {
+                Logger.Info(VersionInfo.Render(), true, false);
+                return ExitSuccess;
+            }
+
             CodecepticonModules module = cmdManager.GetModule();
             if (module == CodecepticonModules.None || module == CodecepticonModules.Unknown)
             {
