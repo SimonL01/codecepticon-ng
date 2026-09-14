@@ -284,7 +284,13 @@ namespace Codecepticon.CommandLine
                     }
                     else
                     {
-                        if (i + 1 <= Args.Length)
+                        // `<` not `<=`: at i == Args.Length - 1 the flag is the
+                        // last token and has no value after it. The off-by-one
+                        // here turned a typo like `--path` with nothing after it
+                        // into an IndexOutOfRangeException and a core dump, which
+                        // is exit 134 - not the documented exit 2 for a bad
+                        // command line. Leaving it null lets validation report it.
+                        if (i + 1 < Args.Length)
                         {
                             value = Args[i + 1];
                         }
